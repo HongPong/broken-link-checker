@@ -698,14 +698,6 @@ class wsBrokenLinkChecker {
         <div class="wrap" id="blc-settings-wrap">
 		<h2><?php _e('Broken Link Checker Options', 'broken-link-checker'); ?></h2>
 
-
-        <div id="blc-sidebar">
-			<div class="metabox-holder">
-				<?php include BLC_DIRECTORY . '/includes/admin/sidebar.php'; ?>
-			</div>
-		</div>
-
-
         <div id="blc-admin-content">
 
         <form name="link_checker_options" id="link_checker_options" method="post" action="<?php
