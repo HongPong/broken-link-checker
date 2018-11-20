@@ -143,7 +143,7 @@ class blcHttpCheckerBase extends blcChecker {
 	function urlencodefix($url){
 		//TODO: Remove/fix this. Probably not a good idea to "fix" invalid URLs like that.
 		return preg_replace_callback(
-			'|[^a-z0-9\+\-\/\\#:.,;=?!&%@()$\|*~_]|i', 
+			'|[^a-z0-9\+\-\/\\#:.,;=?!&%@()$\|*~_]|i',
 			function ($str) {
 				return rawurlencode($str[0]);
 			},
@@ -334,9 +334,10 @@ class blcCurlHttp extends blcHttpCheckerBase {
 			isset($result['status_text']) ? $result['status_text'] : 'N/A'
 		));
 
-        if ( $nobody && $result['broken'] ){
+        if ( $nobody && $result['broken'] && !$use_get){
 			//The site in question might be expecting GET instead of HEAD, so lets retry the request
 			//using the GET verb.
+			// BUT ONLY IF WE HAVEN'T JUST TRIED THIS ALREADY!
 			return $this->check($url, true);
 
 			//Note : normally a server that doesn't allow HEAD requests on a specific resource *should*
