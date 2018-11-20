@@ -267,7 +267,7 @@ class blcCurlHttp extends blcHttpCheckerBase {
 		$info = curl_getinfo($ch);
 
 		//Store the results
-        $result['http_code'] = intval( $info['http_code'] );
+        $result['http_code'] = (int) $info['http_code'];
         $result['final_url'] = $info['url'];
         $result['request_duration'] = $info['total_time'];
         $result['redirect_count'] = $info['redirect_count'];
@@ -334,10 +334,9 @@ class blcCurlHttp extends blcHttpCheckerBase {
 			isset($result['status_text']) ? $result['status_text'] : 'N/A'
 		));
 
-        if ( $nobody && $result['broken'] && !$use_get){
+        if ( $nobody && $result['broken'] && !$result['timeout'] && !$use_get){
 			//The site in question might be expecting GET instead of HEAD, so lets retry the request
-			//using the GET verb.
-			// BUT ONLY IF WE HAVEN'T JUST TRIED THIS ALREADY!
+			//using the GET verb...but not in cases of timeout, or where we've already done it.
 			return $this->check($url, true);
 
 			//Note : normally a server that doesn't allow HEAD requests on a specific resource *should*
