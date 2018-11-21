@@ -182,8 +182,8 @@ class blcCurlHttp extends blcHttpCheckerBase {
         curl_setopt($ch, CURLOPT_URL, $this->urlencodefix($url));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-        //Masquerade as Internet Explorer
-	$ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36';
+        //Masquerade as a recent version of Chrome
+		$ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36';
         curl_setopt($ch, CURLOPT_USERAGENT, $ua);
 
 		//Close the connection after the request (disables keep-alive). The plugin rate-limits requests,
