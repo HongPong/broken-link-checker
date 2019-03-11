@@ -70,7 +70,7 @@ class blcLink {
         // [Redirection 3xx]
         300=>'Multiple Choices',
         301=>'Moved Permanently',
-        302=>'Found',
+        302=>'Moved Temporarily',
         303=>'See Other',
         304=>'Not Modified',
         305=>'Use Proxy',
