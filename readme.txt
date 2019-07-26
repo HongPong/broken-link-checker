@@ -9,6 +9,9 @@ Stable tag: 1.11.5
 This plugin will check your posts, comments and other content for broken links and missing images, and notify you if any are found.
 
 == Description ==
+
+Repo note: This is a fork of the existing 'broken link checker' plugin in the WordPress plugin repository. It is currently not 'versioned' or tagged for a release at a version number.
+
 This plugin will monitor your blog looking for broken links and let you know if any are found.
 
 **Features**
