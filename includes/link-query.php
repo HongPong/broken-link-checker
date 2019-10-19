@@ -806,7 +806,9 @@ class blcLinkQuery {
 		} else if ( isset($current_filter['params']['s_filter']) && !empty($current_filter['params']['s_filter']) ) {
 			$base_filter = $current_filter['params']['s_filter'];
 		} else if ( isset($_GET['s_filter']) && !empty($_GET['s_filter']) ) {
-			$base_filter = $_GET['s_filter'];
+			$base_filter_unsanitized = $_GET['s_filter'];
+			// CVE-2019-16521: sanitize query string to prevent any HTML elements, script tags
+			$base_filter = wp_kses($base_filter_unsanitized, array(), array());
 		}
 
 		$is_broken_filter = ($base_filter == 'broken');
